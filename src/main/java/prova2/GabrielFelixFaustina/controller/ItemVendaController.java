@@ -6,11 +6,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
-
 import prova2.GabrielFelixFaustina.dto.ItemVendaDto;
 import prova2.GabrielFelixFaustina.service.ItemVendaService;
+
 @RestController
 @RequestMapping("/mercado/item")
 public class ItemVendaController {
@@ -23,8 +22,8 @@ public class ItemVendaController {
 		itemVendaService.postItemVenda(idVenda, idProduto, itemVendaDto);
 	}
 	
-	@DeleteMapping("/deletar/{idVenda}/{idItemVenda}")
-	public void deleteItemVenda(@PathVariable Long idVenda, @PathVariable Long idItemVenda) {
-		itemVendaService.deleteItemVenda(idVenda, idVenda);
+	@DeleteMapping("/deletar/{idVenda}/{idProduto}/{idItemVenda}")
+	public void deleteItemVenda(@PathVariable Long idVenda, @PathVariable Long idProduto, @PathVariable Long idItemVenda) {
+		itemVendaService.deleteItemVenda(idVenda, idVenda, idProduto);
 	}
 }

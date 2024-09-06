@@ -1,5 +1,6 @@
 package prova2.GabrielFelixFaustina.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,8 +20,13 @@ public class ProdutoController {
 	private ProdutoService produtoService;
 	
 	@GetMapping("/maior-vendas/{idRestaurante}")
-	public ProdutoDto getProdutoMaisVenda(@PathVariable Long idRestaurante) {
+	public List<ProdutoDto> getProdutoMaisVenda(@PathVariable Long idRestaurante) {
 		return produtoService.getProdutoMaisVenda(idRestaurante);
+	}
+	
+	@GetMapping("/buscar/{nomeProduto}")
+	public List<ProdutoDto> getProduto(@PathVariable String nomeProduto) {
+		return produtoService.getProduto(nomeProduto);
 	}
 	
 	@PostMapping("/adicionar/{idMercado}")

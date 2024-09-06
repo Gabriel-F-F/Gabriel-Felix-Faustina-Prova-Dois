@@ -1,5 +1,6 @@
 package prova2.GabrielFelixFaustina.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,13 @@ public class ProdutoServiceImpl implements ProdutoService {
 	private MercadoRepository mercadoRepository;
 	
 	@Override
-	public ProdutoDto getProdutoMaisVenda(Long idRestaurante) {
-		return new ProdutoDto(produtoRepository.getProdutoMaisVenda(idRestaurante));
+	public List<ProdutoDto> getProdutoMaisVenda(Long idRestaurante) {
+		return produtoRepository.getProdutoMaisVenda(idRestaurante).stream().map(ProdutoDto::new).toList();
+	}
+	
+	@Override
+	public List<ProdutoDto> getProduto(String nomeProduto) {
+		return produtoRepository.getProduto(nomeProduto).stream().map(ProdutoDto::new).toList();
 	}
 	
 	@Override

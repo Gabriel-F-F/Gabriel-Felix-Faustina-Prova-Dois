@@ -1,5 +1,7 @@
 package prova2.GabrielFelixFaustina.repository.impl;
 
+import java.util.List;
+
 import com.querydsl.jpa.impl.JPAQuery;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -18,14 +20,26 @@ public class ProdutoRepositoryImpl implements ProdutoRepositoryCustom {
 	final QProdutoEntity produto = QProdutoEntity.produtoEntity;
 	final QItemVendaEntity itemVenda = QItemVendaEntity.itemVendaEntity;
 	
-	public ProdutoEntity getProdutoMaisVenda(Long idMercado) {
+	public List<ProdutoEntity> getProdutoMaisVenda(Long idMercado) {
 		var query = new JPAQuery<ProdutoEntity>(em);
 		
 		query.select(produto.nome)
 		.from(mercado)
 		.innerJoin(mercado.produtos, produto)
-		.innerJoin(produto.itemVendas, itemVenda);
+		.innerJoin(produto.itemVendas, itemVenda)
+		.where(mercado.id.eq(idMercado));
 			
-		return query.fetchFirst();
+		return query.fetch();
+	}
+	
+	public List<ProdutoEntity> getProduto(String nomeProduto) {
+		var query = new JPAQuery<ProdutoEntity>(em);
+		
+		query.select(produto.nome)
+		.distinct()
+		.from(produto)
+		.where(produto.nome.like(nomeProduto));
+			
+		return query.fetch();
 	}
 }
