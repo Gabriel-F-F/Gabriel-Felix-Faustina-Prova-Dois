@@ -6,5 +6,7 @@ public interface VendaService {
 
 	void postVenda(Long idMercado, VendaDto vendaDto);
 	
+	void finalizaVenda(Long idVenda, VendaDto dto);
+	
 	void deleteVenda(Long idVenda);
 }

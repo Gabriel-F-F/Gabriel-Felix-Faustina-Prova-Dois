@@ -22,6 +22,11 @@ public class ProdutoServiceImpl implements ProdutoService {
 	private MercadoRepository mercadoRepository;
 	
 	@Override
+	public ProdutoDto getProdutoMaisVenda(Long idRestaurante) {
+		return new ProdutoDto(produtoRepository.getProdutoMaisVenda(idRestaurante));
+	}
+	
+	@Override
 	public void postProduto(Long idMercado, ProdutoDto produtoDto) {
 		MercadoEntity mercadoEncontrado = mercadoRepository.findMercadoById(idMercado);
 		produtoRepository.save(new ProdutoEntity(produtoDto, mercadoEncontrado));

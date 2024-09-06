@@ -5,4 +5,5 @@ import prova2.GabrielFelixFaustina.entity.ItemVendaEntity;
 
 public interface ItemVendaRepository extends JpaRepository<ItemVendaEntity, Long> {
 
+	ItemVendaEntity findItemVendaById(Long idItemVenda);
 }

@@ -60,4 +60,16 @@ public class ProdutoEntity {
 		this.valorUnitario = produtoDto.getValorUnitario();
 		return this;
 	}
+	
+	public void descontaEstoque(Integer quantidadeEmEstoque, Integer quantidadeSolicitada) {
+		if(quantidadeEmEstoque > quantidadeSolicitada) {
+		this.estoque = quantidadeEmEstoque - quantidadeSolicitada;
+		} else {
+			throw new IllegalArgumentException("O estoque possui menos que a quantidade solicitada!");
+		}
+	}
+	
+	public void retornaEstoque(Integer quantidadeComprada) {
+		this.estoque += quantidadeComprada;
+	}
 }

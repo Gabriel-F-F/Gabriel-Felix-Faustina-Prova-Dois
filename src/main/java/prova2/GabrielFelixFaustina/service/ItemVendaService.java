@@ -6,5 +6,5 @@ public interface ItemVendaService {
 
 	void postItemVenda(Long idVenda, Long idProduto, ItemVendaDto itemVendaDto);
 	
-	void deleteItemVenda(Long idVenda, Long idItemVenda);
+	void deleteItemVenda(Long idVenda, Long idProduto, Long idItemVenda);
 }

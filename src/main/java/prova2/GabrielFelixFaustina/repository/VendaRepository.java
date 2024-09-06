@@ -6,4 +6,5 @@ import prova2.GabrielFelixFaustina.entity.VendaEntity;
 public interface VendaRepository extends JpaRepository<VendaEntity, Long> { 
 
 	VendaEntity findVendaById(Long idVenda);
+	
 }

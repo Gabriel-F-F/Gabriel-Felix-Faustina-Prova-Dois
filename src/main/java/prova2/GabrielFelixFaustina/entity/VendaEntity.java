@@ -52,4 +52,9 @@ public class VendaEntity {
 		this.valorTotal = BigDecimal.ZERO;
 		this.dataCriacao = dto.getDataCriacao();
 	}
+	
+	public VendaEntity finalizaVenda(VendaDto dto) {
+		this.status = dto.getStatus();
+		return this;
+	}
 }
